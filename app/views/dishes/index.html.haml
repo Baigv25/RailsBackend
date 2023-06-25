@@ -1,0 +1,8 @@
+%p{:style => "color: green"}= notice
+%h1 Dishes
+#dishes
+  - @dishes.each do |dish|
+    = render dish
+    %p
+      = link_to "Show this dish", dish
+= link_to "New dish", new_dish_path
