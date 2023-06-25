@@ -1,0 +1,8 @@
+%p{:style => "color: green"}= notice
+%h1 Clients
+#clients
+  - @clients.each do |client|
+    = render client
+    %p
+      = link_to "Show this client", client
+= link_to "New client", new_client_path
