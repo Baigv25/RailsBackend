@@ -54,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_03_221854) do
     t.string "email"
     t.string "client_password"
     t.string "direction"
+    t.integer "status_client"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,6 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_03_221854) do
     t.string "description"
     t.integer "price"
     t.string "picture"
+    t.integer "status_dish"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
