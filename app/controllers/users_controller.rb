@@ -2,18 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
-    #if require_user or authenticated_user
-    #else
-    #@users = User.all
-    #end
-
     @users = User.all
 
   end
 
   def show
-    #if require_user or authenticated_user
-    #end
   end
 
   def new
@@ -38,8 +31,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    #if require_user or authenticated_user
-    #else
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
@@ -49,19 +40,15 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-  #end
   end
 
   def destroy
-    if require_user or authenticated_user
-    else
     @user.destroy
 
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
-  end
   end
 
   private
@@ -70,6 +57,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:user_name, :password_digest, :user_type)
+      params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :user_type)
     end
 end

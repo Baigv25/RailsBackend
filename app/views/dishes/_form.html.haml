@@ -1,4 +1,4 @@
-= form_with(model: dish) do |form|
+= form_with(model: dish) do |f|
   - if dish.errors.any?
     %div{:style => "color: red"}
       %h2
@@ -8,16 +8,20 @@
         - dish.errors.each do |error|
           %li= error.full_message
   %div
-    = form.label :name, style: "display: block"
-    = form.text_field :name
+    = f.label :name, style: "display: block"
+    = f.text_field :name
   %div
-    = form.label :description, style: "display: block"
-    = form.text_field :description
+  = f.label :description, style: "display: block"
+  = f.text_area :description, value: strip_tags(f.object.description.body.to_s)
   %div
-    = form.label :price, style: "display: block"
-    = form.number_field :price
+    = f.label :price, style: "display: block"
+    = f.number_field :price
   %div
-    = form.label :picture, style: "display: block"
-    = form.text_field :picture
+    = f.label :picture, style: "display: block"
+    = f.file_field :picture
+  .form-group.ml-4.mr-4
+    = f.label :status_dish, class: 'form-label required'
+    = f.select(:status_dish, options_for_select(status_dishes, @dish.status_dish),
+  {prompt:"Seleccione"}, class:'form-control')
   %div
-    = form.submit
+    = f.submit

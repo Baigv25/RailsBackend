@@ -19,5 +19,9 @@
   %div
     = form.label :direction, style: "display: block"
     = form.text_field :direction
+  .form-group.ml-4.mr-4
+    = form.label :statusClient, class: 'form-label required'
+    = form.select(:statusClient, options_for_select(status_clients, @client.status_client),
+  {prompt:"Seleccione"}, class:'form-control')
   %div
     = form.submit
