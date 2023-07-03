@@ -1,0 +1,18 @@
+.div.m-4
+  %h1.mb-4
+    = t('application.cruds_available')
+
+.float-start.m-4
+  = link_to t('activerecord.modules.content.other'), dishes_path, class: 'btn btn-info'
+
+.float-start.m-4
+  = link_to t('activerecord.modules.doctor.other'), users_path, class: 'btn btn-info'
+
+.float-start.m-4
+  = link_to t('activerecord.modules.patient.other'), clients_path, class: 'btn btn-info'
+
+.float-start.m-4
+  = link_to t('activerecord.modules.appointment.other'), orders_path, class: 'btn btn-info'
+
+.float-start.m-4
+  = button_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: 'btn btn-danger'
