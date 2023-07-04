@@ -1,10 +1,19 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_clients
+  before_action :set_dishes
 
-  # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.where(nil)
+    @search = OrderSearch.new(params[:search])
+  
+    if params[:search].present? && params[:search] != ""
+      @orders = @search.date_scope if @search.order_date.present?
+      @orders = @search.status_scope if @search.status.present?
+      @orders = @search.client_scope if @search.client_id.present?
+    end
   end
+  
 
   # GET /orders/1 or /orders/1.json
   def show
@@ -58,6 +67,17 @@ class OrdersController < ApplicationController
   end
 
   private
+    def set_clients
+      @clients = Client.all.map {|client| ["#{client.client_name} #{client.direction}", client.id]}
+    end
+
+    def set_dishes
+      @dishes = Dish.all.map {|dish| ["#{dish.name} #{dish.price}", dish.id]}
+    end
+
+    def statuses
+      Order.pluck(:status).uniq.map { |status| [status.capitalize, status] }
+    end    
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])

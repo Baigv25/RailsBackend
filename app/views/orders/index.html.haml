@@ -1,8 +1,45 @@
-%p{:style => "color: green"}= notice
-%h1 Orders
-#orders
-  - @orders.each do |order|
-    = render order
-    %p
-      = link_to "Show this order", order
-= link_to "New order", new_order_path
+.page-header.m-4
+  %p{:style => "color: green"}= notice
+
+  %h1.mb-4
+    = "List of orders"
+    .float-right
+      = link_to "New order", new_order_path, class: "btn btn-primary"
+
+
+%div
+  = form_tag orders_path, method: :get do
+    = submit_tag 'See all', class: 'btn search-button'
+
+<br>
+
+%div
+  = form_tag orders_path, method: :get do
+    = text_field_tag  'search[date_from]', @search.date_from, placeholder: 'Starting date'
+    = text_field_tag 'search[date_to]', @search.date_to , placeholder: 'Ending date'
+    = text_field_tag 'search[order_date]', @search.order_date, placeholder: 'Date'
+    = select_tag 'search[status]', options_for_select(statuses, @search.status), prompt: 'Order status'
+    = text_field_tag 'search[client_id]', @search.client_id, placeholder: 'Client identification'
+    = submit_tag 'Search', class: 'btn search-button'
+
+<br>
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= "Order date"
+      %th= "Order status"
+      %th= "Dish name"
+      %th= "Client name"
+
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.order_date
+        %td= order.status
+        %td= order.dish.name
+        %td= order.client.client_name
+        %td= link_to "Show this order", order, class: "btn btn-info"
+        %td= link_to "Edit this order", edit_order_path(order), class: "btn btn-success"
+        %td= button_to "Delete this order", order, method: :delete, class: "btn btn-danger"
+
