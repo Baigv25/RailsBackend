@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   scope module: :api, path: "api" do
     resources :clients
-    resources :plates
+    resources :dishes
     resources :orders
     resources :users
   end

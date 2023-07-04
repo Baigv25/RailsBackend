@@ -1,8 +1,9 @@
 json.client do
     json.id @client.id
-    json.name @client.name
+    json.client_name @client.client_name
     json.email @client.email
-    json.password @client.password
+    json.client_password @client.client_password
     json.direction @client.direction
+    json.status_client @client.status_client
 end
 
