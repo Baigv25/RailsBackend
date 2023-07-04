@@ -6,7 +6,6 @@ class OrderSearch
 
         @date_from = parsed_date(params[:date_from])
         @date_to = parsed_date(params[:date_to])
-        @order_date = parsed_date(params[:order_date])
         @client_id = params[:client_id]
         @status = params[:status]
     end
@@ -16,27 +15,26 @@ class OrderSearch
     #end
 
     def date_scope
-        if date_from && date_to <= date_to
-          Order.where(order_date: date_from.beginning_of_day..date_to.end_of_day)
-        elsif order_date
-          Order.where(order_date: order_date.beginning_of_day..order_date.end_of_day)
-        else
-          Order.all
+        query = Order.all
+
+        if date_from.present?
+            query = query.where('order_date >= ?', date_from)
         end
-    end
-      
-      
-        
-      
 
-    def client_scope
-        Order.where('client_id = ?', client_id)
-    end
+        if date_to.present?
+            query = query.where('order_date <= ?', date_to)
+        end
 
-    def status_scope
-        Order.where(status: status)
+        if status.present?
+            query = query.where(status: status)
+        end
+
+        if client_id.present?
+            query = query.where('client_id = ?', client_id)
+        end
+
+        query
     end
-      
 
 private
 

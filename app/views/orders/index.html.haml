@@ -17,7 +17,6 @@
   = form_tag orders_path, method: :get do
     = text_field_tag  'search[date_from]', @search.date_from, placeholder: 'Starting date'
     = text_field_tag 'search[date_to]', @search.date_to , placeholder: 'Ending date'
-    = text_field_tag 'search[order_date]', @search.order_date, placeholder: 'Date'
     = select_tag 'search[status]', options_for_select(statuses, @search.status), prompt: 'Order status'
     = text_field_tag 'search[client_id]', @search.client_id, placeholder: 'Client identification'
     = submit_tag 'Search', class: 'btn search-button'
