@@ -65,6 +65,6 @@ class DishesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dish_params
-      params.require(:dish).permit(:name, :description, :price, :picture, :status_dish)
+      params.require(:dish).permit(:name, :description, :price, :picture, :status_dish, :order_id)
     end
 end
