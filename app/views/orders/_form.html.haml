@@ -1,4 +1,4 @@
-= form_with(model: order) do |form|
+= form_with(model: order) do |f|
   - if order.errors.any?
     %div{:style => "color: red"}
       %h2
@@ -8,10 +8,21 @@
         - order.errors.each do |error|
           %li= error.full_message
   %div
-    = form.label :order_date, style: "display: block"
-    = form.date_field :order_date
+    = f.label :order_date, style: "display: block"
+    = f.date_field :order_date
+  .form-group.mx-4 
+    = f.label :client, class: "form-label required"
+    .div.w-25 
+      = f.select(:client_id, options_for_select(@clients, @order.client), {prompt: t('application.select')}, class: "form-control") 
+
+  .form-group.mx-4 
+    = f.label :dish, class: "form-label required"
+    .div.w-25 
+      = f.select(:dish_id, options_for_select(@dishes, @order.dish), {prompt: t('application.select')}, class: "form-control") 
+
+  .form-group.ml-4.mr-4
+    = f.label :status, class: 'form-label required'
+    = f.select(:status, options_for_select(statuses, @order.status),
+  {prompt:"Seleccione"}, class:'form-control')
   %div
-    = form.label :status, style: "display: block"
-    = form.number_field :status
-  %div
-    = form.submit
+    = f.submit

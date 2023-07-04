@@ -1,5 +1,17 @@
 %div{:id => "#{dom_id order}"}
   %p
+    %strong Client:
+    = order.client.client_name
+  %p
+    %strong Direction:
+    = order.client.direction
+  %p
+    %strong Dish:
+    = order.dish&.name
+  %p
+    %strong Price:
+    = order.dish&.price
+  %p
     %strong Order date:
     = order.order_date
   %p
