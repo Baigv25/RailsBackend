@@ -6,13 +6,11 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.where(nil)
     @search = OrderSearch.new(params[:search])
-  
+
     if params[:search].present? && params[:search] != ""
-      @orders = @search.date_scope if @search.order_date.present?
-      @orders = @search.status_scope if @search.status.present?
-      @orders = @search.client_scope if @search.client_id.present?
+      @orders = @search.date_scope
     end
-  end
+end
   
 
   # GET /orders/1 or /orders/1.json
