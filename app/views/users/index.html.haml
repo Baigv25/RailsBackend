@@ -1,8 +1,24 @@
 %p{:style => "color: green"}= notice
 %h1 Users
-#users
-  - @users.each do |user|
-    = render user
-    %p
-      = link_to "Show this user", user
-= link_to "New user", new_user_path
+#users.container.mt-4
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= t('activerecord.attributes.user.name')
+        %th= t('activerecord.attributes.user.email')
+        %th= t('activerecord.attributes.user.role')
+        %th
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.user_name
+          %td= user.email
+          %td= user.user_type
+          %td
+            = link_to "Show", user, class: "btn btn-info"
+            = link_to "Edit", edit_user_path(user), class: "btn btn-success"
+            = button_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", form: { class: "btn-group" }
+  = link_to "New user", new_user_path
+
+%div
+  = link_to "Back to menu", "http://localhost:3000", class: "btn btn-secondary"

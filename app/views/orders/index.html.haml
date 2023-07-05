@@ -20,17 +20,20 @@
     %table.table.table-striped
       %thead
         %tr
-          %th= t('activerecord.attributes.order.order_date')
+          %th= t('activerecord.attributes.order.client_name')
           %th= t('activerecord.attributes.order.status')
           %th= t('activerecord.attributes.order.dish_name')
-          %th= t('activerecord.attributes.order.client_name')
+          %th
+          %th
+          %th
       %tbody
         - @orders.each do |order|
           %tr
-            %td= order.order_date
+            %td= order.client&.client_name || 'N/A'
             %td= order.status
-            %td= order.dish.name
-            %td= order.client.client_name
+            %td= order.dish&.name || 'N/A'
             %td= link_to t('application.show'), order, class: "btn btn-info"
             %td= link_to t('application.edit'), edit_order_path(order), class: "btn btn-success"
             %td= button_to t('application.delete'), order, method: :delete, class: "btn btn-danger"
+    %div
+      = link_to "Back to menu", "http://localhost:3000", class: "btn btn-secondary"

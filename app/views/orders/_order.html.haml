@@ -1,19 +1,19 @@
-%div{:id => "#{dom_id order}"}
-  %p
+%div{:id => "#{dom_id order}", style: "background-color: #f5f5f5; padding: 10px; margin-bottom: 10px;"}
+  %p{:style => "font-weight: bold; color: #333;"}
     %strong Client:
     = order.client.client_name
-  %p
+  %p{:style => "font-weight: bold; color: #333;"}
     %strong Direction:
     = order.client.direction
-  %p
+  %p{:style => "font-weight: bold; color: #666;"}
     %strong Dish:
     = order.dish&.name
-  %p
+  %p{:style => "font-weight: bold; color: #666;"}
     %strong Price:
     = order.dish&.price
-  %p
+  %p{:style => "font-weight: bold; color: #888;"}
     %strong Order date:
     = order.order_date
-  %p
+  %p{:style => "font-weight: bold; color: #888;"}
     %strong Status:
     = order.status

@@ -1,10 +1,12 @@
-%div{:id => "#{dom_id user}"}
-  %p
-    %strong User name:
-    = user.user_name
-  %p
-    %strong Email:
-    = user.email
-  %p
-    %strong User type:
-    = user.user_type
+%h1 Users
+#users.container.mt-4
+  %div{:id => "#{dom_id user}", :style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
+    %p{:style => "font-weight: bold;"}
+      %strong User name:
+      = user.user_name
+    %p{:style => "font-weight: bold;"}
+      %strong Email:
+      = user.email
+    %p{:style => "font-weight: bold;"}
+      %strong User type:
+      = user.user_type

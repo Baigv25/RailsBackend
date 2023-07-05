@@ -19,6 +19,15 @@
             %td= dish.description
             %td= dish.price
             %td
-              = image_tag dish.picture.url, class: "dish-picture", style: "width: 200px; height: 100px;"
+              - if dish.picture.present?
+                = image_tag dish.picture.url, class: "dish-picture", style: "width: 200px; height: 100px;"
+              - else
+                No picture available
             %td= link_to "Show this dish", dish, class: "btn btn-info"
-    = link_to "New dish", new_dish_path, class: "btn btn-primary"
+            %td= link_to "Edit", edit_dish_path(dish), class: "btn btn-success"
+            %td= button_to "Delete", dish, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
+    %div
+      = link_to "Back to menu", "http://localhost:3000", class: "btn btn-secondary"
+
+
+
