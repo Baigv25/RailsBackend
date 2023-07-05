@@ -1,44 +1,36 @@
-.page-header.m-4
-  %p{:style => "color: green"}= notice
-
-  %h1.mb-4
-    = "List of orders"
-    .float-right
-      = link_to "New order", new_order_path, class: "btn btn-primary"
-
-
-%div
-  = form_tag orders_path, method: :get do
-    = submit_tag 'See all', class: 'btn search-button'
-
-<br>
-
-%div
-  = form_tag orders_path, method: :get do
-    = text_field_tag  'search[date_from]', @search.date_from, placeholder: 'Starting date'
-    = text_field_tag 'search[date_to]', @search.date_to , placeholder: 'Ending date'
-    = select_tag 'search[status]', options_for_select(statuses, @search.status), prompt: 'Order status'
-    = text_field_tag 'search[client_id]', @search.client_id, placeholder: 'Client identification'
-    = submit_tag 'Search', class: 'btn search-button'
-
-<br>
-
-%table.table.table-striped
-  %thead
-    %tr
-      %th= "Order date"
-      %th= "Order status"
-      %th= "Dish name"
-      %th= "Client name"
-
-  %tbody
-    - @orders.each do |order|
-      %tr
-        %td= order.order_date
-        %td= order.status
-        %td= order.dish.name
-        %td= order.client.client_name
-        %td= link_to "Show this order", order, class: "btn btn-info"
-        %td= link_to "Edit this order", edit_order_path(order), class: "btn btn-success"
-        %td= button_to "Delete this order", order, method: :delete, class: "btn btn-danger"
-
+.container.mt-4
+  .div.m-4.my-4.py-4
+    .page.header 
+      %h1.mb-4
+        = "List of orders"
+      .float-end.pb-4
+        = link_to "New order", new_order_path, class: "btn btn-primary"
+    %div
+      = form_tag orders_path, method: :get do
+        = submit_tag 'See all', class: 'btn search-button'
+    %br
+    %div
+      = form_tag orders_path, method: :get do
+        = text_field_tag  'search[date_from]', @search.date_from, placeholder: 'Starting date'
+        = text_field_tag 'search[date_to]', @search.date_to , placeholder: 'Ending date'
+        = select_tag 'search[status]', options_for_select(statuses, @search.status), prompt: 'Order status'
+        = text_field_tag 'search[client_id]', @search.client_id, placeholder: 'Client identification'
+        = submit_tag 'Search', class: 'btn search-button'
+    %br
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= t('activerecord.attributes.order.order_date')
+          %th= t('activerecord.attributes.order.status')
+          %th= t('activerecord.attributes.order.dish_name')
+          %th= t('activerecord.attributes.order.client_name')
+      %tbody
+        - @orders.each do |order|
+          %tr
+            %td= order.order_date
+            %td= order.status
+            %td= order.dish.name
+            %td= order.client.client_name
+            %td= link_to t('application.show'), order, class: "btn btn-info"
+            %td= link_to t('application.edit'), edit_order_path(order), class: "btn btn-success"
+            %td= button_to t('application.delete'), order, method: :delete, class: "btn btn-danger"
