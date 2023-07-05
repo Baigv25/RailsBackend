@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
   before_action :authenticate_user! 
-  include UserAdministratorTypeAuthorization
   before_action :set_clients
   before_action :set_dishes
 
