@@ -1,8 +1,24 @@
-%p{:style => "color: green"}= notice
-%h1 Dishes
-#dishes
-  - @dishes.each do |dish|
-    = render dish
-    %p
-      = link_to "Show this dish", dish
-= link_to "New dish", new_dish_path
+.container.mt-4
+  .div.m-4.my-4.py-4
+    .page.header
+      %h1.mb-4
+        = "List of dishes"
+      .float-end.pb-4
+        = link_to "New dish", new_dish_path, class: "btn btn-primary"
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= t('activerecord.attributes.dish.name')
+          %th= t('activerecord.attributes.dish.description')
+          %th= t('activerecord.attributes.dish.price')
+          %th= t('activerecord.attributes.dish.picture')
+      %tbody
+        - @dishes.each do |dish|
+          %tr
+            %td= dish.name
+            %td= dish.description
+            %td= dish.price
+            %td
+              = image_tag dish.picture.url, class: "dish-picture", style: "width: 200px; height: 100px;"
+            %td= link_to "Show this dish", dish, class: "btn btn-info"
+    = link_to "New dish", new_dish_path, class: "btn btn-primary"

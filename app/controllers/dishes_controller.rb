@@ -1,8 +1,11 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: %i[ show edit update destroy ]
+  before_action :authenticate_user! 
+  include UserAdministratorTypeAuthorization
 
   # GET /dishes or /dishes.json
   def index
+    ActiveStorage::Current.url_options = Rails.application.config.action_mailer.default_url_options
     @dishes = Dish.all
   end
 
