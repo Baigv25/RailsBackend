@@ -1,8 +1,8 @@
 %p{:style => "color: green"}= notice
 = render @dish
-%div
-  = link_to "Edit this dish", edit_dish_path(@dish)
+%div.actions
+  = link_to "Edit this dish", edit_dish_path(@dish), class: "btn btn-primary"
   |
-  \#{link_to "Back to dishes", dishes_path}
-  
-  \#{button_to "Destroy this dish", @dish, method: :delete}
+  = link_to "Back to dishes", dishes_path, class: "btn btn-primary"
+  |
+  = button_to "Destroy this dish", @dish, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"

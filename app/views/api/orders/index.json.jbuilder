@@ -3,5 +3,5 @@ json.array! @orders do |order|
   json.order_date order.order_date
   json.status order.status
   json.client_id order.client_id
-  json.plate_id order.plate_id
+  json.dish_id order.dish_id
 end

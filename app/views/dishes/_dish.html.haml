@@ -1,13 +1,17 @@
-%div{:id => "#{dom_id dish}"}
-  %p
-    %strong Name:
-    = dish.name
-  %p
-    %strong Description:
-    = dish.description
-  %p
-    %strong Price:
-    = dish.price
-  %p
-    %strong Picture:
-    = image_tag dish.picture, width: 200
+.container.mt-4
+  %div{:id => "#{dom_id dish}"}
+    %p{:style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
+      %strong{:style => "font-weight: bold;"} Name:
+      = dish.name
+    %p{:style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
+      %strong{:style => "font-weight: bold;"} Description:
+      = dish.description
+    %p{:style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
+      %strong{:style => "font-weight: bold;"} Price:
+      = dish.price
+    %p
+      %strong Picture:
+      - if dish.picture.present?
+        = image_tag dish.picture, width: 200
+      - else
+        No picture available
