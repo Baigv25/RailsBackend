@@ -21,6 +21,7 @@
       %thead
         %tr
           %th= t('activerecord.attributes.order.client_name')
+          %th= t('activerecord.attributes.order.order_date')
           %th= t('activerecord.attributes.order.status')
           %th= t('activerecord.attributes.order.dish_name')
           %th
@@ -30,6 +31,7 @@
         - @orders.each do |order|
           %tr
             %td= order.client&.client_name || 'N/A'
+            %td= order.order_date
             %td= order.status
             %td= order.dish&.name || 'N/A'
             %td= link_to t('application.show'), order, class: "btn btn-info"

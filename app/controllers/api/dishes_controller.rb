@@ -4,7 +4,7 @@ module Api
       before_action :set_plate, only: %i[ show edit update destroy ]
   
       def index
-        @dishes = Dish.all
+        @dishes = Dish.where(status_dish: 'active')
       end
   
       def show
@@ -50,7 +50,7 @@ module Api
         end
   
         def dish_params
-            params.require(:dish).permit(:name, :description, :price, :picture, :order_id)
+            params.require(:dish).permit(:name, :description, :price, :picture, :status_dish, :order_id)
         end
     end
   end
