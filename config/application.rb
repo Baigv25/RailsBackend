@@ -24,8 +24,5 @@ module Backend
         resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options]
       end
     end
-
-    I18n.load_path += Dir[Rails.root.join("config", "locales", "*.{yml}")]
-    I18n.default_locale = :es
   end
 end

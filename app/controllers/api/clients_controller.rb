@@ -1,4 +1,4 @@
- module Api 
+module Api 
   class ClientsController < ApplicationController
     skip_before_action :verify_authenticity_token
     before_action :set_client, only: %i[ show edit update destroy ]
@@ -52,7 +52,7 @@
       end
 
       def client_params
-        params.require(:client).permit(:name, :email, :password, :direction)
-      end
+        params.require(:client).permit(:client_name, :email, :client_password, :direction, :status_client)
+      end      
   end
 end
