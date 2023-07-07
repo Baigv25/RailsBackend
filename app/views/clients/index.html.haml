@@ -9,6 +9,7 @@
   %table.table.table-striped
     %thead
       %tr
+        %th= t('activerecord.attributes.client.id')
         %th= t('activerecord.attributes.client.name')
         %th= t('activerecord.attributes.client.email')
         %th= t('activerecord.attributes.client.direction')
@@ -17,6 +18,7 @@
     %tbody
       - @clients.each do |client|
         %tr
+          %td= client.id
           %td= client.client_name
           %td= client.email
           %td= client.direction
