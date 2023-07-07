@@ -9,19 +9,22 @@
           - user.errors.each do |error|
             %li= error.full_message
     %div
-      = form.label :user_name, style: "display: block"
-      = form.text_field :user_name
+      = form.label t('activerecord.attributes.user.name'), style: "display: block"
+      = form.text_field :user_name, class: "form-control"
     %div
-      = form.label :email, style: "display: block"
-      = form.email_field :email
+      = form.label t('activerecord.attributes.user.email'), style: "display: block"
+      = form.email_field :email, class: "form-control"
     %div
-      = form.label :password, style: "display: block"
-      = form.password_field :password
+      = form.label t('activerecord.attributes.user.password'), style: "display: block"
+      = form.password_field :password, class: "form-control"
     %div
-      = form.label :password_confirmation, style: "display: block"
-      = form.password_field :password_confirmation
+      = form.label t('activerecord.attributes.user.password_confirmation'), style: "display: block"
+      = form.password_field :password_confirmation, class: "form-control"
     .form-group.ml-4.mr-4
-      = form.label :user_type, class: 'form-label required'
-      = form.select(:user_type, options_for_select(user_types, @user.user_type), {prompt:"Seleccione"}, class:'form-control')
+      = form.label t('activerecord.attributes.user.type'), class: 'form-label required'
+      = form.select(:user_type, options_for_select(user_types, @user.user_type), {prompt:t('application.select')}, class:'form-control')
     .form-group
-      = form.submit
+      = form.submit t('application.save'), class: "btn btn-primary"
+    %div
+      = link_to t('activerecord.attributes.user.back_to_users'), users_path, style: "display: inline-block; padding: 0.5rem 1rem; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 0.25rem; border: none;"
+

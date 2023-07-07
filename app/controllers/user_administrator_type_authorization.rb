@@ -9,7 +9,7 @@ module UserAdministratorTypeAuthorization
 
     def check_user_type
       unless current_user && current_user.user_type == 'administrator'
-        redirect_to root_path, alert: "Acceso no autorizado."
+        redirect_to root_path, alert: t('application.unauthorized_access')
       end
     end
 end

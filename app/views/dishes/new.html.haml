@@ -1,6 +1,7 @@
 .container
-  %h1.New-dish New dish
+  %h1.New-dish 
+    = t('application.new_model', model: t('activerecord.modules.dish.one'))
   = render "form", dish: @dish
-  %br/
-  %div
-    = link_to "Back to dishes", dishes_path, class: "btn btn-secondary"
+
+
+

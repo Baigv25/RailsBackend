@@ -1,0 +1,124 @@
+es:
+  application: 
+    list_of: Lista de %{model}
+    new_model: Nuevo %{model}
+    edit_model: Editar %{model}
+    show: Mostrar %{model}
+    edit: Editar
+    save: Guardar
+    delete: Eliminar
+    create: Crear
+    cruds_available: CRUDs Disponibles
+    can_not_be_saved: No se pudo guardar
+    select: Seleccione
+    back_to_menu: Volver al menú
+    unauthorized_access: Acceso no autorizado.
+  activerecord: 
+    attributes:
+      dish:
+        name: Nombre
+        description: Descripción
+        price: Precio
+        picture: Imagen
+        back_to_dishes: Volver a platos
+        dish_created: Plato creado correctamente
+        dish_updated: Plato editado correctamente
+        dish_destroyed: Plato eliminado correctamente
+        status: Estado del plato
+        status_dish: 
+          active: Activo
+          inactive: Inactivo
+      user:
+        name: Nombre
+        email: Correo Electrónico
+        role: Rol
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
+        back_to_users: Volver a usuarios
+        user_created: Usuario creado correctamente
+        user_updated: Usuario editado correctamente
+        user_destroyed: Usuario eliminado correctamente
+        type: Tipo de usuario
+        user_type: 
+          administrator: Administrador
+          kitchen_user: Usuario de cocina
+      client:
+        client_name: Nombre
+        email: Correo Electrónico
+        direction: Dirección 
+        client_password: Contraseña
+        back_to_clients: Volver a clientes
+        client_created: Cliente creado correctamente
+        client_updated: Cliente editado correctamente
+        client_destroyed: Cliente eliminado correctamente
+        status: Estado del cliente
+        status_client: 
+          active: Activo
+          inactive: Inactivo
+      order:
+        order_date: Fecha de la orden
+        status: Estado
+        dish_name: Nombre del plato
+        see_all: Mostrar todo
+        new_order: Nueva orden
+        starting_date: Fecha de inicio
+        ending_date: Fecha de finalización
+        client_identification: Identificación del cliente
+        search: Buscar
+        name_of_client: Nombre del cliente
+        name_of_dish: Nombre del plato
+        back_to_orders: Volver a ordenes
+        order_created: Orden creado correctamente
+        order_updated: Orden editado correctamente
+        order_destroyed: Orden eliminado correctamente
+        id_of_client: Identificación
+      log_in:
+        email: Correo Electrónico
+        password: Contraseña
+        remember_me: Recuérdame
+        forgot_your_password?: ¿Olvidó su contraseña?
+        send_me_reset_password_instructions: Enviarme instrucciones para restablecer contraseña
+      sign_up:
+        user_name: Nombre de usuario
+        email: Correo Electrónico
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
+        user_type: Tipo de usuario
+        characters_minimum: caracteres mínimos
+      dashboard:
+        main_menu: Menú principal
+        log_off: Cerrar sesión
+    modules:
+      dish:
+        one: Plato
+        other: Platos 
+      user:
+        one: Usuario
+        other: Usuarios
+      client:
+        one: Cliente
+        other: Clientes
+      order:
+        one: Orden
+        other: Ordenes
+      log_in:
+        one: Iniciar sesión
+      sign_up:
+        one: Inscribirse
+    errors: 
+      models:
+          user:
+            attributes:
+              first_name:
+                blank: vacío
+                too_long: debe tener como máximo %{count} caracteres
+              last_name: 
+                blank: vacío
+                too_long: debe tener como máximo %{count} caracteres
+              email:
+                blank: vacío
+                invalid: debe de ser un correo valido
+              password_confirmation:
+                confirmation: Confirmación 
+              level:
+                blank: vacío

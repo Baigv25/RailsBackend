@@ -1,13 +1,30 @@
-%div{:id => "#{dom_id client}"}
-  %p
-    %strong Client name:
-    = client.client_name
-  %p
-    %strong Email:
-    = client.email
-  %p
-    %strong Client password:
-    = client.client_password
-  %p
-    %strong Direction:
-    = client.direction
+.container.mt-4
+  %h1 
+    = t('activerecord.modules.client.one')
+  %div{:id => "#{dom_id client}", :style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
+    %p{:style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
+      %strong 
+        = t('activerecord.attributes.client.client_name')
+        =" : "
+      = client.client_name
+    %p{:style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
+      %strong 
+        = t('activerecord.attributes.client.email')
+        =" : "
+      = client.email
+    %p{:style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
+      %strong 
+        = t('activerecord.attributes.client.client_password')
+        =" : "
+      = client.client_password
+    %p{:style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
+      %strong 
+        = t('activerecord.attributes.client.direction')
+        =" : "
+      = client.direction
+  %div
+    = link_to t('activerecord.attributes.client.back_to_clients'), clients_path, style: "display: inline-block; padding: 0.5rem 1rem; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 0.25rem; border: none;"
+    |
+    = link_to t('application.edit'), edit_client_path(@client), class: "btn btn-success"
+    
+    = button_to t('application.delete'), @client, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"

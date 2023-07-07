@@ -1,15 +1,15 @@
 .div.container.text-center.mt-5
   %h1.mb-4
-    = t('application.Main Menu')
+    = t('activerecord.attributes.dashboard.main_menu')
 
 .div.container.text-center.mt-5
   .div.d-flex.justify-content-center.my-4
-    = link_to t('activerecord.modules.content.dishes'), dishes_path, class: 'btn btn-info btn-lg mx-2'
+    = link_to t('activerecord.modules.dish.other'), dishes_path, class: 'btn btn-info btn-lg mx-2'
 
-    = link_to t('activerecord.modules.doctor.users'), users_path, class: 'btn btn-info btn-lg mx-2'
+    = link_to t('activerecord.modules.user.other'), users_path, class: 'btn btn-info btn-lg mx-2'
 
-    = link_to t('activerecord.modules.patient.clients'), clients_path, class: 'btn btn-info btn-lg mx-2'
+    = link_to t('activerecord.modules.client.other'), clients_path, class: 'btn btn-info btn-lg mx-2'
 
-    = link_to t('activerecord.modules.appointment.orders'), orders_path, class: 'btn btn-info btn-lg mx-2'
+    = link_to t('activerecord.modules.order.other'), orders_path, class: 'btn btn-info btn-lg mx-2'
 
-    = button_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: 'btn btn-danger btn-lg mx-2'
+    = button_to t('activerecord.attributes.dashboard.log_off'), destroy_user_session_path, method: :delete, class: 'btn btn-danger btn-lg mx-2'

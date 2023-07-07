@@ -10,19 +10,21 @@
             %li= error.full_message
     %div
       = form.label :client_name, style: "display: block"
-      = form.text_field :client_name
+      = form.text_field :client_name, class: "form-control"
     %div
       = form.label :email, style: "display: block"
-      = form.text_field :email
+      = form.text_field :email, class: "form-control"
     %div
       = form.label :client_password, style: "display: block"
-      = form.text_field :client_password
+      = form.text_field :client_password, class: "form-control"
     %div
       = form.label :direction, style: "display: block"
-      = form.text_field :direction
+      = form.text_field :direction, class: "form-control"
     .form-group.ml-4.mr-4
-      = form.label :status_client, class: 'form-label required'
+      = form.label t('activerecord.attributes.client.status'), class: 'form-label required'
       = form.select(:status_client, options_for_select(status_clients, @client.status_client),
     {prompt:"Seleccione"}, class:'form-control')
+    .form-group
+      = form.submit t('application.save'), class: "btn btn-primary"
     %div
-      = form.submit
+      = link_to t('activerecord.attributes.client.back_to_clients'), clients_path, style: "display: inline-block; padding: 0.5rem 1rem; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 0.25rem; border: none;"

@@ -2,9 +2,10 @@
   .div.m-4.my-4.py-4
     .page.header
       %h1.mb-4
-        = "List of dishes"
+        %p{:style => "color: green"}= notice
+        = t('application.list_of', model: t('activerecord.modules.dish.other'))
       .float-end.pb-4
-        = link_to "New dish", new_dish_path, class: "btn btn-primary"
+        = link_to t('application.new_model', model: t('activerecord.modules.dish.one')), new_dish_path, class: "btn btn-primary"
     %table.table.table-striped
       %thead
         %tr
@@ -23,11 +24,12 @@
                 = image_tag dish.picture.url, class: "dish-picture", style: "width: 200px; height: 100px;"
               - else
                 No picture available
-            %td= link_to "Show this dish", dish, class: "btn btn-info"
-            %td= link_to "Edit", edit_dish_path(dish), class: "btn btn-success"
-            %td= button_to "Delete", dish, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
+            %td= link_to t('application.show', model: t('activerecord.modules.dish.one')), dish, class: "btn btn-info"
+            %td= link_to t('application.edit'), edit_dish_path(dish), class: "btn btn-success"
+            %td= button_to t('application.delete'), dish, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
     %div
-      = link_to "Back to menu", "http://localhost:3000", class: "btn btn-secondary"
+      = link_to t('application.back_to_menu'), root_path, style: "display: inline-block; padding: 0.5rem 1rem; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 0.25rem; border: none;"
+
 
 
 

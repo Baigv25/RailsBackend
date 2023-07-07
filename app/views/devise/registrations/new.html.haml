@@ -1,29 +1,30 @@
 .div.container.my-4.py-4
-  %h2 Registrarse
+  %h2 
+    = t('activerecord.modules.sign_up.one')
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = render "devise/shared/error_messages", resource: resource
     .field.form-group
-      = f.label :user_name, class: "form-label"
+      = f.label t('activerecord.attributes.sign_up.user_name'), class: "form-label"
       %br/
       = f.text_field :user_name, autofocus: true, class: "form-control"
     .field.form-group
-      = f.label :email, class: "form-label"
+      = f.label t('activerecord.attributes.sign_up.email'), class: "form-label"
       %br/
       = f.email_field :email, autofocus: true, class: "form-control"
     .field.form-group
-      = f.label :password, class: "form-label"
+      = f.label t('activerecord.attributes.sign_up.password'), class: "form-label"
       - if @minimum_password_length
         %em
-          (#{@minimum_password_length} characters minimum)
+          (#{@minimum_password_length} #{ t('activerecord.attributes.sign_up.characters_minimum')})
       %br/
       = f.password_field :password, class: "form-control"
     .field.form-group
-      = f.label :password_confirmation, class: "form-label"
+      = f.label t('activerecord.attributes.sign_up.password_confirmation'), class: "form-label"
       %br/
       = f.password_field :password_confirmation, class: "form-control"
     .form-group.ml-4.mr-4
-      = f.label :user_type, class: 'form-label required'
+      = f.label t('activerecord.attributes.sign_up.user_type'), class: 'form-label required'
       = f.select(:user_type, options_for_select(user_types, @user.user_type), {prompt:"Seleccione"}, class:'form-control')
     .actions
-      = f.submit "Sign up", class: "btn btn-primary"
+      = f.submit t('activerecord.modules.sign_up.one'), class: "btn btn-success"
   = render "devise/shared/links"

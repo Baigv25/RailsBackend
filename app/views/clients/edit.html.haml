@@ -1,7 +1,5 @@
-%h1 Editing client
-= render "form", client: @client
-%br/
-%div
-  = link_to "Show this client", @client
-  |
-  \#{link_to "Back to clients", clients_path}
+.container
+  %h1 
+    = t('application.edit_model', model: t('activerecord.modules.client.one'))
+  = render "form", client: @client
+

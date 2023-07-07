@@ -1,18 +1,19 @@
 .div.container.my-4.py-4
-  %h2 Log in
+  %h2 
+    = t('activerecord.modules.log_in.one')
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field.form-group
-      = f.label :email, class: "form-label"
+      = f.label t('activerecord.attributes.log_in.email'), class: "form-label"
       %br/
       = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
     .field.form-group
-      = f.label :password, class: "form-label"
+      = f.label t('activerecord.attributes.log_in.password'), class: "form-label"
       %br/
       = f.password_field :password, autocomplete: "current-password", class: "form-control"
     - if devise_mapping.rememberable?
       .field.form-group
         = f.check_box :remember_me, class: "form-check-input"
-        = f.label :remember_me, class: "form-check-label"
+        = f.label t('activerecord.attributes.log_in.remember_me'), class: "form-check-label"
     .actions
-      = f.submit "Log in", class: "btn btn-primary"
+      = f.submit t('activerecord.modules.log_in.one'), class: "btn btn-primary"
   = render "devise/shared/links"

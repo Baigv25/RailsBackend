@@ -1,5 +1,5 @@
-%h1 New client
-= render "form", client: @client
-%br/
-%div
-  = link_to "Back to clients", clients_path
+.container 
+  %h1 
+    = t('application.new_model', model: t('activerecord.modules.client.one'))
+  = render "form", client: @client
+

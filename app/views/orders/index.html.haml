@@ -2,25 +2,27 @@
   .div.m-4.my-4.py-4
     .page.header 
       %h1.mb-4
-        = "List of orders"
+        %p{:style => "color: green"}= notice
+        = t('application.list_of', model: t('activerecord.modules.order.other'))
       .float-end.pb-4
-        = link_to "New order", new_order_path, class: "btn btn-primary"
+        = link_to t('activerecord.attributes.order.new_order'), new_order_path, class: "btn btn-primary"
     %div
       = form_tag orders_path, method: :get do
-        = submit_tag 'See all', class: 'btn search-button'
+        = submit_tag t('activerecord.attributes.order.see_all'), class: 'btn search-button'
     %br
     %div
       = form_tag orders_path, method: :get do
-        = text_field_tag  'search[date_from]', @search.date_from, placeholder: 'Starting date'
-        = text_field_tag 'search[date_to]', @search.date_to , placeholder: 'Ending date'
-        = select_tag 'search[status]', options_for_select(statuses, @search.status), prompt: 'Order status'
-        = text_field_tag 'search[client_id]', @search.client_id, placeholder: 'Client identification'
-        = submit_tag 'Search', class: 'btn search-button'
+        = text_field_tag  'search[date_from]', @search.date_from, placeholder: t('activerecord.attributes.order.starting_date')
+        = text_field_tag 'search[date_to]', @search.date_to , placeholder: t('activerecord.attributes.order.ending_date')
+        = select_tag 'search[status]', options_for_select(statuses, @search.status), prompt: t('activerecord.attributes.order.status')
+        = text_field_tag 'search[client_id]', @search.client_id, placeholder: t('activerecord.attributes.order.client_identification')
+        = submit_tag t('activerecord.attributes.order.search'), class: 'btn search-button'
     %br
     %table.table.table-striped
       %thead
         %tr
-          %th= t('activerecord.attributes.order.client_name')
+          %th= t('activerecord.attributes.order.id_of_client')
+          %th= t('activerecord.attributes.order.name_of_client')
           %th= t('activerecord.attributes.order.order_date')
           %th= t('activerecord.attributes.order.status')
           %th= t('activerecord.attributes.order.dish_name')
@@ -30,12 +32,13 @@
       %tbody
         - @orders.each do |order|
           %tr
+            %td= order.client_id
             %td= order.client&.client_name || 'N/A'
             %td= order.order_date
             %td= order.status
             %td= order.dish&.name || 'N/A'
-            %td= link_to t('application.show'), order, class: "btn btn-info"
+            %td= link_to t('application.show', model: t('activerecord.modules.order.one')), order, class: "btn btn-info"
             %td= link_to t('application.edit'), edit_order_path(order), class: "btn btn-success"
             %td= button_to t('application.delete'), order, method: :delete, class: "btn btn-danger"
     %div
-      = link_to "Back to menu", "http://localhost:3000", class: "btn btn-secondary"
+      = link_to t('application.back_to_menu'), root_path, style: "display: inline-block; padding: 0.5rem 1rem; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 0.25rem; border: none;"
