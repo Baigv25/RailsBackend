@@ -5,7 +5,7 @@ module Api
     def create
       email = params[:email]
       password = params[:password]
-
+      user = User.find_by(email: email)
       if user && user.valid_password?(password)
         render json: { message: 'Inicio de sesión exitoso' }
       else

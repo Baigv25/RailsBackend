@@ -43,6 +43,7 @@ es:
           administrator: Administrador
           kitchen_user: Usuario de cocina
       client:
+        id: Identificación
         client_name: Nombre
         email: Correo Electrónico
         direction: Dirección 
