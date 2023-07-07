@@ -20,7 +20,9 @@
     = f.label :picture, style: "display: block"
     = f.file_field :picture, class: "form-control"
   .form-group.ml-4.mr-4
-    = f.label :status_dish, class: 'form-label required'
-    = f.select(:status_dish, options_for_select(status_dishes, @dish.status_dish), {prompt:"Seleccione"}, class:'form-control')
+    = f.label t('activerecord.attributes.dish.status'), class: 'form-label required'
+    = f.select(:status_dish, options_for_select(status_dishes, @dish.status_dish), {prompt: t('application.select')}, class:'form-control')
+  .form-group
+    = f.submit t('application.save'), class: "btn btn-primary"
   %div
-    = f.submit "Create dish", class: "btn btn-primary"
+    = link_to t('activerecord.attributes.dish.back_to_dishes'), dishes_path, style: "display: inline-block; padding: 0.5rem 1rem; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 0.25rem; border: none;"

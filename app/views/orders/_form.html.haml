@@ -14,18 +14,20 @@
       = f.date_field :order_date, class: "form-control"
 
     .form-group.mx-4
-      = f.label :client, class: "form-label required"
+      = f.label :name_of_client, class: "form-label required"
       .div.w-25
-        = f.select(:client_id, options_for_select(@clients, @order.client), {prompt: t('application.select')}, class: "form-control")
+        = f.select(:client_id, options_for_select(@clients, @order.client_id), {prompt: t('application.select')}, class: "form-control")
 
     .form-group.mx-4
-      = f.label :dish, class: "form-label required"
+      = f.label :name_of_dish, class: "form-label required"
       .div.w-25
-        = f.select(:dish_id, options_for_select(@dishes, @order.dish), {prompt: t('application.select')}, class: "form-control")
+        = f.select(:dish_id, options_for_select(@dishes, @order.dish_id), {prompt: t('application.select')}, class: "form-control")
 
     .form-group.ml-4.mr-4
       = f.label :status, class: 'form-label required'
-      = f.select(:status, options_for_select(statuses, @order.status), {prompt:"Seleccione"}, class:'form-control')
+      = f.select(:status, options_for_select(statuses, @order.status), {prompt:t('application.select')}, class:'form-control')
 
+    .form-group
+      = f.submit t('application.save'), class: "btn btn-primary"
     %div
-      = f.submit class: "btn btn-primary"
+      = link_to t('activerecord.attributes.order.back_to_orders'), orders_path, style: "display: inline-block; padding: 0.5rem 1rem; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 0.25rem; border: none;"

@@ -1,12 +1,29 @@
-%h1 Users
-#users.container.mt-4
+.container.mt-4
+  %h1 
+    = t('activerecord.modules.user.one')
   %div{:id => "#{dom_id user}", :style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
-    %p{:style => "font-weight: bold;"}
-      %strong User name:
+    %p{:style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
+      %strong 
+        = t('activerecord.attributes.user.name')
+        =" : "
       = user.user_name
-    %p{:style => "font-weight: bold;"}
-      %strong Email:
+    %p{:style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
+      %strong 
+        = t('activerecord.attributes.user.email')
+        =" : "
       = user.email
-    %p{:style => "font-weight: bold;"}
-      %strong User type:
+    %p{:style => "background-color: #f5f5f5; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;"}
+      %strong 
+        = t('activerecord.attributes.user.type')
+        =" : "
       = user.user_type
+
+  %div
+  = link_to t('activerecord.attributes.user.back_to_users'), users_path, style: "display: inline-block; padding: 0.5rem 1rem; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 0.25rem; border: none;"
+  |
+  = link_to t('application.edit'), edit_user_path(@user), class: "btn btn-success"
+  
+  = button_to t('application.delete'), @user, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
+
+
+

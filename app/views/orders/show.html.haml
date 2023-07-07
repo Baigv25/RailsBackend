@@ -2,9 +2,4 @@
   .div.m-4.py-4
     %p{:style => "color: green"}= notice
     = render @order
-    %div
-      = link_to "Edit this order", edit_order_path(@order), class: "btn btn-success"
-      |
-      = link_to "Back to orders", orders_path, class: "btn btn-info"
-      |
-      = button_to "Destroy this order", @order, method: :delete, class: "btn btn-danger"
+

@@ -1,13 +1,18 @@
-%p{:style => "color: green"}= notice
-%h1 Clients
 #clients.container.mt-4
+  .div.m-4.my-4.py-4
+    .page.header
+      %h1.mb-4
+        %p{:style => "color: green"}= notice
+        = t('application.list_of', model: t('activerecord.modules.client.other'))
+      .float-end.pb-4
+        = link_to t('application.new_model', model: t('activerecord.modules.client.one')), new_client_path, class: "btn btn-primary"
   %table.table.table-striped
     %thead
       %tr
         %th= t('activerecord.attributes.client.name')
         %th= t('activerecord.attributes.client.email')
         %th= t('activerecord.attributes.client.direction')
-        %th= t('activerecord.attributes.client.status_client')
+        %th= t('activerecord.attributes.client.status')
         %th
     %tbody
       - @clients.each do |client|
@@ -17,10 +22,8 @@
           %td= client.direction
           %td= client.status_client
           %td
-            = link_to "Show", client, class: "btn btn-info"
-            = link_to "Edit", edit_client_path(client), class: "btn btn-success"
-            = button_to "Delete", client, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", form: { class: "btn-group" }
-  = link_to "New client", new_client_path
-
-%div
-  = link_to "Back to menu", "http://localhost:3000", class: "btn btn-secondary"
+          %td= link_to t('application.show', model: t('activerecord.modules.client.one')), client, class: "btn btn-info"
+          %td= link_to t('application.edit'), edit_client_path(client), class: "btn btn-success"
+          %td= button_to t('application.delete'), client, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
+  %div
+    = link_to t('activerecord.attributes.client.back_to_clients'), root_path, style: "display: inline-block; padding: 0.5rem 1rem; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 0.25rem; border: none;"

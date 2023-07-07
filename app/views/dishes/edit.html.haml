@@ -1,8 +1,5 @@
 .container
-  %h1.Editing-dish Editing dish
+  %h1.Editing-dish 
+    = t('application.edit_model', model: t('activerecord.modules.dish.one'))
   = render "form", dish: @dish
-  %br/
-  %div
-    = link_to "Show this dish", @dish, class: "btn btn-info"
-    |
-    = link_to "Back to dishes", dishes_path, class: "btn btn-secondary"
+
