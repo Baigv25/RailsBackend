@@ -10,10 +10,6 @@ class OrderSearch
         @status = params[:status]
     end
 
-    #def date_scope
-        #Order.where(order_date: order_date.beginning_of_day..order_date.end_of_day)
-    #end
-
     def date_scope
         query = Order.all
 
